@@ -19,6 +19,7 @@ public class ViewPetDetailsActivity extends AppCompatActivity {
     Pet pet;
     PetsSQLHelper petsSQLHelper;
     PetsAdapter petsAdapter;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +36,15 @@ public class ViewPetDetailsActivity extends AppCompatActivity {
 
         pet = new Pet();
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
-        final int id = getIntent().getExtras().getInt("id");
+        id = getIntent().getExtras().getInt("id");
         pet = petsSQLHelper.retrievePet(id);
         petsAdapter = new PetsAdapter(getBaseContext(), petsSQLHelper.retrieveAllPetsCursor());
 
-        tvName.setText(tvName.getText().toString() + pet.getName());
-        tvSpecies.setText(tvSpecies.getText().toString() + pet.getSpecies());
-        tvBreed.setText(tvBreed.getText().toString() + pet.getBreed());
-        tvBirthday.setText(tvBirthday.getText().toString() + pet.getBirthday());
-        tvDescription.setText(tvDescription.getText().toString() + pet.getDescription());
+        tvName.setText("Name: " + pet.getName());
+        tvSpecies.setText("Species: "+ pet.getSpecies());
+        tvBreed.setText("Breed: " + pet.getBreed());
+        tvBirthday.setText("Birthday: "+ pet.getBirthday());
+        tvDescription.setText("Description: "+ pet.getDescription());
 
 
         buttonEdit.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +77,18 @@ public class ViewPetDetailsActivity extends AppCompatActivity {
         if(petsAdapter!=null)
         {
             petsAdapter.changeCursor(petsSQLHelper.retrieveAllPetsCursor());
+            pet = petsSQLHelper.retrievePet(id);
+            tvName.setText("Name: " + pet.getName());
+            tvSpecies.setText("Species: "+ pet.getSpecies());
+            tvBreed.setText("Breed: " + pet.getBreed());
+            tvBirthday.setText("Birthday: "+ pet.getBirthday());
+            tvDescription.setText("Description: "+ pet.getDescription());
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 }
