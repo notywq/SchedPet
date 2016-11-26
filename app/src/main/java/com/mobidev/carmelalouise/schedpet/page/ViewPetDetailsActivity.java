@@ -85,10 +85,4 @@ public class ViewPetDetailsActivity extends AppCompatActivity {
             tvDescription.setText("Description: "+ pet.getDescription());
         }
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-    }
 }

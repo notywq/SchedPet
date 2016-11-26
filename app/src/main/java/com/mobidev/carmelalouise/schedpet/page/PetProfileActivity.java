@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobidev.carmelalouise.schedpet.R;
 import com.mobidev.carmelalouise.schedpet.controller.PetsAdapter;
@@ -19,6 +20,7 @@ public class PetProfileActivity extends AppCompatActivity {
     Pet pet;
     PetsSQLHelper petsSQLHelper;
     PetsAdapter petsAdapter;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +29,8 @@ public class PetProfileActivity extends AppCompatActivity {
 
         tvProfileName = (TextView) findViewById(R.id.tv_profile_name);
         buttonViewDetails = (Button) findViewById(R.id.button_view_details);
-        final int id = getIntent().getExtras().getInt("id");
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
+        id = getIntent().getExtras().getInt("id");
         pet = petsSQLHelper.retrievePet(id);
 
         tvProfileName.setText(pet.getName());
@@ -49,9 +51,13 @@ public class PetProfileActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Toast.makeText(getBaseContext(), "beep", Toast.LENGTH_SHORT);
         if(petsAdapter!=null)
         {
             petsAdapter.changeCursor(petsSQLHelper.retrieveAllPetsCursor());
+            pet = petsSQLHelper.retrievePet(id);
+            tvProfileName.setText(pet.getName());
         }
     }
+
 }
