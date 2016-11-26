@@ -61,7 +61,7 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
     public void updatePet(Pet pet){
         SQLiteDatabase db = getWritableDatabase();
         ContentValues cv = new ContentValues();
-        cv.put(Pet.NAME, pet.getName()); //THIS WAS MISSING. So of course name was not updating!
+        cv.put(Pet.NAME, pet.getName());
         cv.put(Pet.SPECIES, pet.getSpecies());
         cv.put(Pet.BREED, pet.getBreed());
         cv.put(Pet.BIRTHDAY, pet.getBirthday());
