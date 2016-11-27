@@ -38,11 +38,6 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/button_edit_appointments"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete an Appointment"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button_delete_appointments"/>
+   
 
 </RelativeLayout>
