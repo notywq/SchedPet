@@ -22,6 +22,7 @@
         android:layout_height="wrap_content"
         android:text="View Appointments"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_appointments_title"
         android:id="@+id/button_view_appointments"/>
 
     <Button
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:text="Add an Appointment"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/button_view_appointments"
         android:id="@+id/button_add_appointments"/>
 
     <Button
@@ -36,6 +38,7 @@
         android:layout_height="wrap_content"
         android:text="Edit an Appointment"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/button_add_appointments"
         android:id="@+id/button_edit_appointments"/>
 
     <Button
@@ -43,6 +46,7 @@
         android:layout_height="wrap_content"
         android:text="Delete an Appointment"
         android:layout_centerHorizontal="true"
+        android:layout_below="@id/button_edit_appointments"
         android:id="@+id/button_delete_appointments"/>
 
 </RelativeLayout>
