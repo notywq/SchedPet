@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mobidev.carmelalouise.schedpet.page.ViewAppointmentsActivity">
+    tools:context="com.mobidev.carmelalouise.schedpet.page.AppointmentsActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,22 +31,22 @@
         android:text="Add an Appointment"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/button_view_appointments"
-        android:id="@+id/button_add_appointments"/>
+        android:id="@+id/button_add_appointment"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit an Appointment"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/button_add_appointments"
-        android:id="@+id/button_edit_appointments"/>
+        android:layout_below="@id/button_add_appointment"
+        android:id="@+id/button_edit_appointment"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete an Appointment"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/button_edit_appointments"
-        android:id="@+id/button_delete_appointments"/>
+        android:layout_below="@id/button_edit_appointment"
+        android:id="@+id/button_delete_appointment"/>
 
 </RelativeLayout>

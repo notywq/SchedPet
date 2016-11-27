@@ -19,7 +19,7 @@
         <activity android:name=".page.PetProfileActivity" />
         <activity android:name=".page.EditPetActivity" />
         <activity android:name=".page.ViewPetDetailsActivity" />
-        <activity android:name=".page.ViewAppointmentsActivity"></activity>
+        <activity android:name=".page.AppointmentsActivity"></activity>
     </application>
 
 </manifest>
