@@ -29,7 +29,12 @@ public class PetProfileActivity extends AppCompatActivity {
 
         tvProfileName = (TextView) findViewById(R.id.tv_profile_name);
         buttonViewDetails = (Button) findViewById(R.id.button_view_details);
+
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
+
+        //PETS ADAPTER DECLARATION WAS MISSING
+        petsAdapter = new PetsAdapter(getBaseContext(), petsSQLHelper.retrieveAllPetsCursor());
+
         id = getIntent().getExtras().getInt("id");
         pet = petsSQLHelper.retrievePet(id);
 
@@ -48,10 +53,12 @@ public class PetProfileActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(getBaseContext(), "beep", Toast.LENGTH_SHORT);
+       // Toast.makeText(getBaseContext(), "beep", Toast.LENGTH_SHORT).show();
         if(petsAdapter!=null)
         {
             petsAdapter.changeCursor(petsSQLHelper.retrieveAllPetsCursor());

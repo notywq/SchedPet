@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mobidev.carmelalouise.schedpet.R;
 import com.mobidev.carmelalouise.schedpet.controller.PetsAdapter;
@@ -69,6 +70,14 @@ public class ViewPetDetailsActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        //Toast.makeText(getBaseContext(), "beep2", Toast.LENGTH_SHORT).show();
+
     }
 
     @Override
