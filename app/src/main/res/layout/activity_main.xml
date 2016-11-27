@@ -24,10 +24,18 @@
         android:layout_alignParentRight="true"
         android:id="@+id/button_add"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View All Appointments"
+        android:layout_below="@+id/button_add"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_view_all_appointments"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_title"
+        android:layout_below="@id/button_view_all_appointments"
         android:id="@+id/rv_pets">
     </android.support.v7.widget.RecyclerView>
 

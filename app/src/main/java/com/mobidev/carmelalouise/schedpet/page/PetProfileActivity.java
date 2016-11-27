@@ -32,7 +32,6 @@ public class PetProfileActivity extends AppCompatActivity {
 
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
 
-        //PETS ADAPTER DECLARATION WAS MISSING
         petsAdapter = new PetsAdapter(getBaseContext(), petsSQLHelper.retrieveAllPetsCursor());
 
         id = getIntent().getExtras().getInt("id");
@@ -58,7 +57,6 @@ public class PetProfileActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-       // Toast.makeText(getBaseContext(), "beep", Toast.LENGTH_SHORT).show();
         if(petsAdapter!=null)
         {
             petsAdapter.changeCursor(petsSQLHelper.retrieveAllPetsCursor());

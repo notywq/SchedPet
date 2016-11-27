@@ -73,14 +73,6 @@ public class ViewPetDetailsActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        //Toast.makeText(getBaseContext(), "beep2", Toast.LENGTH_SHORT).show();
-
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         if(petsAdapter!=null)
