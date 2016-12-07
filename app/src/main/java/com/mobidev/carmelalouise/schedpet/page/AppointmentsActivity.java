@@ -17,7 +17,6 @@ import java.util.Calendar;
 public class AppointmentsActivity extends AppCompatActivity {
 
     Button buttonAddAppointment;
-    String appointmentName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

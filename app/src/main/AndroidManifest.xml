@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/schedpet"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -19,7 +19,9 @@
         <activity android:name=".page.PetProfileActivity" />
         <activity android:name=".page.EditPetActivity" />
         <activity android:name=".page.ViewPetDetailsActivity" />
-        <activity android:name=".page.AppointmentsActivity"></activity>
+        <activity android:name=".page.AppointmentsActivity" />
+        <activity android:name=".page.VaccinesActivity" />
+        <activity android:name=".page.AddVaccineActivity" />
     </application>
 
 </manifest>
