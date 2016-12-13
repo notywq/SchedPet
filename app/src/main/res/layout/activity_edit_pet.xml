@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_edit_delete_pet"
     android:layout_width="match_parent"
@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mobidev.carmelalouise.schedpet.page.EditPetActivity">
+    tools:context="com.mobidev.carmelalouise.schedpet.page.EditPetActivity"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
@@ -16,35 +17,68 @@
         android:text="Edit/Delete Pet!"
         android:id="@+id/tv_edit_delete_title"/>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edit_name_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_edit_delete_title"
-        android:id="@+id/et_edit_name"/>
+        android:layout_height="wrap_content">
 
-    <EditText
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_edit_delete_title"
+            android:hint="Name"
+            android:id="@+id/et_edit_name"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:entries="@array/pet_arrays"
+        android:prompt="@string/pet_prompt"
         android:layout_below="@id/et_edit_name"
         android:id="@+id/et_edit_species"/>
 
-    <EditText
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edit_breed_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_edit_species"
-        android:id="@+id/et_edit_breed"/>
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_edit_breed"
-        android:id="@+id/et_edit_birthday"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_edit_species"
+            android:hint="Breed"
+            android:id="@+id/et_edit_breed"/>
 
-    <EditText
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edit_birthday_wrapper"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/et_edit_birthday"
-        android:id="@+id/et_edit_description"/>
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_edit_breed"
+            android:id="@+id/et_edit_birthday"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/edit_description_wrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/et_edit_birthday"
+            android:hint="Description"
+            android:id="@+id/et_edit_description"/>
+
+    </android.support.design.widget.TextInputLayout>
 
     <Button
         android:layout_width="wrap_content"
@@ -53,4 +87,4 @@
         android:layout_below="@id/et_edit_description"
         android:id="@+id/button_edit_done"/>
 
-</RelativeLayout>
+</LinearLayout>
