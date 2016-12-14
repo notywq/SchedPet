@@ -1,7 +1,5 @@
 package com.mobidev.carmelalouise.schedpet.model;
 
-import android.media.Image;
-
 /**
  * Created by Carmela Louise on 11/26/2016.
  */
@@ -14,7 +12,6 @@ public class Pet {
     public static final String BREED = "breed";
     public static final String BIRTHDAY = "birthday";
     public static final String DESCRIPTION = "description";
-    public static final String CALENDAR_ID = "calendarId";
     public static final String BIRTHDAY_EVENT_ID = "birthdayEventId";
 
 
@@ -24,20 +21,18 @@ public class Pet {
     private String breed;
     private String birthday;
     private String description;
-    private String calendarId;
     private String birthdayEventId;
 
     public Pet() {
     }
 
-    public Pet(int id, String name, String species, String breed, String birthday, String description, String calendarId, String birthdayEventId) {
+    public Pet(int id, String name, String species, String breed, String birthday, String description, String birthdayEventId) {
         this.id = id;
         this.name = name;
         this.species = species;
         this.breed = breed;
         this.birthday = birthday;
         this.description = description;
-        this.calendarId = calendarId;
         this.birthdayEventId = birthdayEventId;
     }
 
@@ -89,14 +84,6 @@ public class Pet {
         this.description = description;
     }
 
-    public String getCalendarId() {
-        return calendarId;
-    }
-
-    public void setCalendarId(String calendarId) {
-        this.calendarId = calendarId;
-    }
-
     public String getBirthdayEventId() {
         return birthdayEventId;
     }
@@ -114,7 +101,6 @@ public class Pet {
                 ", breed='" + breed + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", description='" + description + '\'' +
-                ", calendarId='" + calendarId + '\'' +
                 ", birthdayEventId='" + birthdayEventId + '\'' +
                 '}';
     }

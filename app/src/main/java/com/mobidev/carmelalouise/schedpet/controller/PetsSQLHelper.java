@@ -32,7 +32,6 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
                        + Pet.BREED + " TEXT, "
                        + Pet.BIRTHDAY + " DATE, "
                        + Pet.DESCRIPTION + " TEXT, "
-                       + Pet.CALENDAR_ID + " TEXT, "
                        + Pet.BIRTHDAY_EVENT_ID + " TEXT);";
 
         db.execSQL(sql);
@@ -55,7 +54,6 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
         cv.put(Pet.BREED, pet.getBreed());
         cv.put(Pet.BIRTHDAY, pet.getBirthday());
         cv.put(Pet.DESCRIPTION, pet.getDescription());
-        cv.put(Pet.CALENDAR_ID, pet.getCalendarId());
         cv.put(Pet.BIRTHDAY_EVENT_ID, pet.getBirthdayEventId());
 
         db.insert(Pet.TABLE, null, cv);
@@ -70,7 +68,6 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
         cv.put(Pet.BREED, pet.getBreed());
         cv.put(Pet.BIRTHDAY, pet.getBirthday());
         cv.put(Pet.DESCRIPTION, pet.getDescription());
-        cv.put(Pet.CALENDAR_ID, pet.getCalendarId());
         cv.put(Pet.BIRTHDAY_EVENT_ID, pet.getBirthdayEventId());
 
         db.update(Pet.TABLE, cv, Pet.ID + " = ? ",
@@ -119,9 +116,6 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
             );
             pet.setDescription(
                     c.getString(c.getColumnIndex(Pet.DESCRIPTION))
-            );
-            pet.setCalendarId(
-                    c.getString(c.getColumnIndex(Pet.CALENDAR_ID))
             );
             pet.setBirthdayEventId(
                     c.getString(c.getColumnIndex(Pet.BIRTHDAY_EVENT_ID))
@@ -178,9 +172,6 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
                 );
                 pet.setDescription(
                         c.getString(c.getColumnIndex(Pet.DESCRIPTION))
-                );
-                pet.setCalendarId(
-                        c.getString(c.getColumnIndex(Pet.CALENDAR_ID))
                 );
                 pet.setBirthdayEventId(
                         c.getString(c.getColumnIndex(Pet.BIRTHDAY_EVENT_ID))

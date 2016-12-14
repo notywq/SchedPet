@@ -3,11 +3,12 @@ package com.mobidev.carmelalouise.schedpet.page;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
+import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -16,6 +17,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.mobidev.carmelalouise.schedpet.R;
+import com.mobidev.carmelalouise.schedpet.controller.CalendarUtils;
 import com.mobidev.carmelalouise.schedpet.controller.PetsSQLHelper;
 import com.mobidev.carmelalouise.schedpet.model.Pet;
 
@@ -75,6 +77,7 @@ public class RegisterPetActivity extends AppCompatActivity {
                     pet.setBirthday(birthday);
                     pet.setDescription(description);
                     petsSQLHelper.insertPet(pet);
+                    addBirthdayToCalendar(month, day, year);
                     finish();
                 }
 
@@ -95,12 +98,19 @@ public class RegisterPetActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         long startTime = cal.getTimeInMillis();
         long endTime = cal.getTimeInMillis()  + 60 * 60 * 1000;
+        long event_id = CalendarUtils.getNewEventId(getContentResolver(), null, this);
+
+        Log.i("CalendarUtils: ", event_id + "");
+
+        String eventID = CalendarContract.Events.ORIGINAL_ID;
+        Log.i("CalendarContract: ", eventID);
 
         intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTime);
         intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,endTime);
         intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
 
         intent.putExtra(CalendarContract.Events.TITLE, pet.getName() + "'s Birthday");
+        //intent.putExtra(CalendarContract.Events);
         intent.putExtra(CalendarContract.Events.RRULE, "FREQ=YEARLY");
 
         startActivity(intent);
