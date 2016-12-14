@@ -9,11 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.mobidev.carmelalouise.schedpet.page.PetProfileActivity;
 import com.mobidev.carmelalouise.schedpet.R;
 import com.mobidev.carmelalouise.schedpet.model.Pet;
+import com.mobidev.carmelalouise.schedpet.page.PetProfileActivity;
 
 import java.util.ArrayList;
 
@@ -37,7 +36,8 @@ public class PetsAdapter extends CursorRecyclerViewAdapter<PetsAdapter.PetViewHo
         viewHolder.tvDisplayName.setText(
                 cursor.getString(cursor.getColumnIndex(Pet.NAME))
         );
-        viewHolder.tvType.setText(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)));
+        viewHolder.tvType.setText(cursor.getString(cursor.getColumnIndex(Pet.BREED)));
+
         if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Dog"))
             viewHolder.image.setImageResource(R.drawable.dog);
         else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Cat"))
@@ -46,6 +46,14 @@ public class PetsAdapter extends CursorRecyclerViewAdapter<PetsAdapter.PetViewHo
             viewHolder.image.setImageResource(R.drawable.bird);
         else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Fish"))
             viewHolder.image.setImageResource(R.drawable.fish);
+        else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Insect"))
+            viewHolder.image.setImageResource(R.drawable.insect);
+        else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Reptile"))
+            viewHolder.image.setImageResource(R.drawable.reptile);
+        else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Rodent"))
+            viewHolder.image.setImageResource(R.drawable.rodent);
+        else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Others"))
+            viewHolder.image.setImageResource(R.drawable.unique);
     }
 
 

@@ -13,20 +13,28 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:textSize="30dp"
+        android:text="Vaccine Details"
+        android:id="@+id/tv_vaccine_details_title"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_vaccine_details_title"
         android:id="@+id/tv_vaccine_name"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/tv_vaccine_name"
         android:id="@+id/tv_vaccine_description"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:layout_below="@id/tv_vaccine_description"
         android:id="@+id/tv_vaccine_date_vaccinated"/>
 
@@ -34,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@id/tv_vaccine_description"
+        android:layout_below="@id/tv_vaccine_date_vaccinated"
         android:text="Edit"
         android:id="@+id/button_edit_vaccine"/>
 
@@ -42,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/tv_vaccine_description"
+        android:layout_below="@id/tv_vaccine_date_vaccinated"
         android:text="Delete"
         android:id="@+id/button_delete_vaccine"/>
 

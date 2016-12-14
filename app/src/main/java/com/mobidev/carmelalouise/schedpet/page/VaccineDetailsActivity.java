@@ -3,6 +3,8 @@ package com.mobidev.carmelalouise.schedpet.page;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -59,12 +61,35 @@ public class VaccineDetailsActivity extends AppCompatActivity {
         buttonEditVaccine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), EditPetActivity.class);
+                Intent intent = new Intent(getBaseContext(), EditVaccineActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("id", vaccine.getId());
 
                 getBaseContext().startActivity(intent);
             }
         });
+    }
+
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(vaccinesAdapter!=null)
+        {
+            final int id = getIntent().getExtras().getInt("id");
+            //vaccinesAdapter.changeCursor(vaccinesSQLHelper.retrieveVaccine(id));
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

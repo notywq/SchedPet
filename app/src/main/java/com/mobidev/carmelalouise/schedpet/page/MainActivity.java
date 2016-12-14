@@ -45,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         petsAdapter = new PetsAdapter(getBaseContext(), petsSQLHelper.retrieveAllPetsCursor());
         tvMessage = (TextView) findViewById(R.id.tv_message);
 
+        if(!(petsSQLHelper.retrieveAllPets().isEmpty()))
+            tvMessage.setText("");
+
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
 
         rvPets.setLayoutManager(linearLayoutManager);

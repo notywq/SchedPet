@@ -158,6 +158,7 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
                 vaccine.setPetId(
                         c.getInt(c.getColumnIndex(Vaccine.PET_ID))
                 );
+                vaccines.add(vaccine);
             }while(c.moveToNext());
         }
 

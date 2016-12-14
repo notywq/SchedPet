@@ -17,9 +17,19 @@
         android:textSize="30dp"
         android:id="@+id/tv_vaccine_title" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No vaccines added yet!"
+        android:layout_below="@id/tv_vaccine_title"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv_vaccine_message"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tv_vaccine_message"
         android:id="@+id/rv_vaccines">
     </android.support.v7.widget.RecyclerView>
 
