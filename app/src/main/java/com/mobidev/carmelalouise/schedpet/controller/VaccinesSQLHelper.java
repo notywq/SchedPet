@@ -105,6 +105,9 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
             vaccine.setDateVaccinated(
                     c.getString(c.getColumnIndex(Vaccine.DATE_VACCINATED))
             );
+            vaccine.setPetId(
+                    c.getInt(c.getColumnIndex(Vaccine.PET_ID))
+            );
         }
 
         return vaccine;
