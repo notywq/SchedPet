@@ -35,11 +35,11 @@ public class VaccinesActivity extends AppCompatActivity {
 
         rvVaccines = (RecyclerView) findViewById(R.id.rv_vaccines);
         buttonAddVaccine = (FloatingActionButton) findViewById(R.id.button_add_vaccine);
-        final int id = getIntent().getExtras().getInt("id");
+        final int pet_id = getIntent().getExtras().getInt("id");
 
         pet = new Pet();
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
-        pet = petsSQLHelper.retrievePet(id);
+        pet = petsSQLHelper.retrievePet(pet_id);
 
         vaccinesSQLHelper = new VaccinesSQLHelper(getBaseContext());
 

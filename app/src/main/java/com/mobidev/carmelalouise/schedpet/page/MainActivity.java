@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.mobidev.carmelalouise.schedpet.R;
 import com.mobidev.carmelalouise.schedpet.controller.PetsAdapter;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     RecyclerView rvPets;
     FloatingActionButton buttonAdd;
+    TextView tvMessage;
     Button buttonViewAllAppointments;
     PetsSQLHelper petsSQLHelper;
     PetsAdapter petsAdapter;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         buttonViewAllAppointments = (Button) findViewById(R.id.button_view_all_appointments);
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
         petsAdapter = new PetsAdapter(getBaseContext(), petsSQLHelper.retrieveAllPetsCursor());
+        tvMessage = (TextView) findViewById(R.id.tv_message);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, false);
 

@@ -23,9 +23,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View All Appointments"
-        android:layout_below="@+id/tv_title"
+        android:layout_below="@id/tv_title"
         android:layout_centerHorizontal="true"
         android:id="@+id/button_view_all_appointments"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No pets added yet!"
+        android:layout_below="@id/button_view_all_appointments"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/tv_message"/>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
