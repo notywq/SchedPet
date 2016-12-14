@@ -12,6 +12,7 @@
         <item>Bird</item>
         <item>Reptile</item>
         <item>Rodent</item>
+        <item>Insect</item>
         <item>Others</item>
     </string-array>
 

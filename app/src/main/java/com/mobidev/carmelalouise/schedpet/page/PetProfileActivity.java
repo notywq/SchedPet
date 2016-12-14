@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mobidev.carmelalouise.schedpet.R;
@@ -16,6 +17,7 @@ public class PetProfileActivity extends AppCompatActivity {
 
     TextView tvProfileName, tvSpecies, tvBreed, tvBirthday, tvDescription;
     Button buttonAppointments, buttonEdit, buttonDelete, buttonVaccines;
+    ImageView ivIcon;
     Pet pet;
     PetsSQLHelper petsSQLHelper;
     PetsAdapter petsAdapter;
@@ -35,6 +37,7 @@ public class PetProfileActivity extends AppCompatActivity {
         buttonDelete = (Button) findViewById(R.id.button_delete);
         buttonAppointments = (Button) findViewById(R.id.button_appointments);
         buttonVaccines = (Button) findViewById(R.id.button_vaccines);
+        ivIcon = (ImageView) findViewById(R.id.iv_icon);
 
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
 
@@ -48,6 +51,8 @@ public class PetProfileActivity extends AppCompatActivity {
         tvBreed.setText("Breed: " + pet.getBreed());
         tvBirthday.setText("Birthday: "+ pet.getBirthday());
         tvDescription.setText("Description: "+ pet.getDescription());
+        setImageViewIcon();
+
 
 
         buttonEdit.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +116,28 @@ public class PetProfileActivity extends AppCompatActivity {
             tvBreed.setText("Breed: " + pet.getBreed());
             tvBirthday.setText("Birthday: "+ pet.getBirthday());
             tvDescription.setText("Description: "+ pet.getDescription());
+            setImageViewIcon();
         }
+    }
+
+    protected void setImageViewIcon()
+    {
+        if(pet.getSpecies().equalsIgnoreCase("Dog"))
+            ivIcon.setImageResource(R.drawable.dog);
+        else if(pet.getSpecies().equalsIgnoreCase("Cat"))
+            ivIcon.setImageResource(R.drawable.cat);
+        else if(pet.getSpecies().equalsIgnoreCase("bird"))
+            ivIcon.setImageResource(R.drawable.bird);
+        else if(pet.getSpecies().equalsIgnoreCase("fish"))
+            ivIcon.setImageResource(R.drawable.fish);
+        else if(pet.getSpecies().equalsIgnoreCase("insect"))
+            ivIcon.setImageResource(R.drawable.insect);
+        else if(pet.getSpecies().equalsIgnoreCase("reptile"))
+            ivIcon.setImageResource(R.drawable.reptile);
+        else if(pet.getSpecies().equalsIgnoreCase("rodent"))
+            ivIcon.setImageResource(R.drawable.rodent);
+        else if(pet.getSpecies().equalsIgnoreCase("Others"))
+            ivIcon.setImageResource(R.drawable.unique);
     }
 
 }
