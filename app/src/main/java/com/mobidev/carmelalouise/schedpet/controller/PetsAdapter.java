@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,15 @@ public class PetsAdapter extends CursorRecyclerViewAdapter<PetsAdapter.PetViewHo
         viewHolder.tvDisplayName.setText(
                 cursor.getString(cursor.getColumnIndex(Pet.NAME))
         );
+        viewHolder.tvType.setText(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)));
+        if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Dog"))
+            viewHolder.image.setImageResource(R.drawable.dog);
+        else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Cat"))
+            viewHolder.image.setImageResource(R.drawable.cat);
+        else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Bird"))
+            viewHolder.image.setImageResource(R.drawable.bird);
+        else if(cursor.getString(cursor.getColumnIndex(Pet.SPECIES)).equals("Fish"))
+            viewHolder.image.setImageResource(R.drawable.fish);
     }
 
 
@@ -48,12 +58,16 @@ public class PetsAdapter extends CursorRecyclerViewAdapter<PetsAdapter.PetViewHo
 
     public class PetViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView tvDisplayName;
+        TextView tvType;
+        ImageView image;
         View container;
 
         public PetViewHolder(View itemView) {
             super(itemView);
             tvDisplayName = (TextView) itemView.findViewById(R.id.tv_display_name);
+            tvType = (TextView) itemView.findViewById(R.id.tv_display_type);
             container = itemView.findViewById(R.id.container);
+            image = (ImageView) itemView.findViewById(R.id.tv_icon);
             itemView.setOnClickListener(this);
         }
 
