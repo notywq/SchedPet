@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.mobidev.carmelalouise.schedpet.model.Pet;
 import com.mobidev.carmelalouise.schedpet.model.Vaccine;
 
 import java.util.ArrayList;
@@ -27,19 +26,20 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + Vaccine.TABLE
-                + " (" + Pet.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + " (" + Vaccine.ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                        + Vaccine.NAME + " TEXT, "
                        + Vaccine.DESCRIPTION + " TEXT, "
                        + Vaccine.DATE_VACCINATED + " DATE, "
                        + Vaccine.DATE_NEXT_DUE + " DATE, "
-                       + Vaccine.ACCOMPLISHED + " BOOLEAN);";
+                       + Vaccine.ACCOMPLISHED + " BOOLEAN, "
+                       + Vaccine.PET_ID + " INTEGER);";
 
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS " + Pet.TABLE + ";";
+        String sql = "DROP TABLE IF EXISTS " + Vaccine.TABLE + ";";
         db.execSQL(sql);
         onCreate(db);
     }
@@ -53,9 +53,10 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
         cv.put(Vaccine.DESCRIPTION, vaccine.getDescription());
         cv.put(Vaccine.DATE_VACCINATED, vaccine.getDateVaccinated());
         cv.put(Vaccine.DATE_NEXT_DUE , vaccine.getDateNextDue());
-        cv.put(Vaccine.ACCOMPLISHED, vaccine.isAccomplished());
+        cv.put(Vaccine.ACCOMPLISHED, vaccine.getAccomplished());
+        cv.put(Vaccine.PET_ID, vaccine.getPetId());
 
-        db.insert(Pet.TABLE, null, cv);
+        db.insert(Vaccine.TABLE, null, cv);
     }
 
     // update
@@ -66,9 +67,10 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
         cv.put(Vaccine.DESCRIPTION, vaccine.getDescription());
         cv.put(Vaccine.DATE_VACCINATED, vaccine.getDateVaccinated());
         cv.put(Vaccine.DATE_NEXT_DUE , vaccine.getDateNextDue());
-        cv.put(Vaccine.ACCOMPLISHED, vaccine.isAccomplished());
+        cv.put(Vaccine.ACCOMPLISHED, vaccine.getAccomplished());
+        cv.put(Vaccine.PET_ID, vaccine.getPetId());
 
-        db.update(Pet.TABLE, cv, Pet.ID + " = ? ",
+        db.update(Vaccine.TABLE, cv, Vaccine.ID + " = ? ",
                 new String[]{vaccine.getId() + ""});
     }
 
@@ -97,7 +99,9 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
             // this means that there is an item with that id
             // read the row/item
             vaccine = new Vaccine();
-            vaccine.setId(c.getInt(c.getColumnIndex(Pet.ID)));
+            vaccine.setId(
+                    c.getInt(c.getColumnIndex(Vaccine.ID))
+            );
             vaccine.setName(
                     c.getString(c.getColumnIndex(Vaccine.NAME))
             );
@@ -118,13 +122,13 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
         return vaccine;
     }
 
-    public Cursor retrieveAllVaccinesCursor(){
+    public Cursor retrieveAllVaccinesPerPetCursor(int petId){
         SQLiteDatabase db = getReadableDatabase();
         return db.query(
                 Vaccine.TABLE,
                 null, // *
-                null, // selection string
-                null, // selection args
+                " " + Vaccine.PET_ID + " = ? ", // selection string
+                new String[]{ petId +"" }, // selection args
                 null, // group by
                 null, // having
                 null  // order by
@@ -132,14 +136,14 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
     }
 
     // retrieve -> all items
-    public ArrayList<Vaccine> retrieveAllVaccines(){
+    public ArrayList<Vaccine> retrieveAllVaccinesPerPet(int petId){
         ArrayList<Vaccine> vaccines = new ArrayList<>();
 
         SQLiteDatabase db = getReadableDatabase();
-        Cursor c = db.query(Pet.TABLE,
+        Cursor c = db.query(Vaccine.TABLE,
                  null, // columns
-                 null, // selection string
-                 null, // selection args (values to ?s)
+                 " " + Vaccine.PET_ID + " = ? ", // selection string
+                 new String[]{ petId +"" }, // selection args
                  null, // group by
                  null, // having
                  null  // order by
@@ -148,7 +152,9 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
         if(c.moveToFirst()){
             do {
                 Vaccine vaccine = new Vaccine();
-                vaccine.setId(c.getInt(c.getColumnIndex(Pet.ID)));
+                vaccine.setId(
+                        c.getInt(c.getColumnIndex(Vaccine.ID))
+                );
                 vaccine.setName(
                         c.getString(c.getColumnIndex(Vaccine.NAME))
                 );
@@ -163,6 +169,9 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
                 );
                 vaccine.setAccomplished(
                         c.getString(c.getColumnIndex(Vaccine.ACCOMPLISHED))
+                );
+                vaccine.setPetId(
+                        c.getInt(c.getColumnIndex(Vaccine.PET_ID))
                 );
             }while(c.moveToNext());
         }

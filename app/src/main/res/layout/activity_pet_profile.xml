@@ -11,27 +11,69 @@
     android:orientation="vertical"
     tools:context="com.mobidev.carmelalouise.schedpet.page.PetProfileActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/iv_icon"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        android:layout_centerHorizontal="true"
+        android:layout_toRightOf="@id/iv_icon"
         android:id="@+id/tv_profile_name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Species: "
+        android:layout_below="@id/tv_profile_name"
+        android:id="@+id/tv_species"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Breed: "
+        android:layout_below="@id/tv_species"
+        android:id="@+id/tv_breed"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Birthday: "
+        android:layout_below="@id/tv_breed"
+        android:id="@+id/tv_birthday"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description: "
+        android:layout_below="@id/tv_birthday"
+        android:id="@+id/tv_description"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Pet Details"
+        android:text="Edit"
+        android:layout_below="@id/tv_description"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_profile_name"
-        android:id="@+id/button_view_details"/>
+        android:id="@+id/button_edit"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_below="@id/button_edit"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/button_delete"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Appointments"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/button_view_details"
+        android:layout_below="@id/button_delete"
         android:id="@+id/button_appointments"/>
 
     <Button

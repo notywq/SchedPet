@@ -15,8 +15,8 @@ import com.mobidev.carmelalouise.schedpet.model.Pet;
 
 public class PetProfileActivity extends AppCompatActivity {
 
-    TextView tvProfileName;
-    Button buttonViewDetails, buttonAppointments;
+    TextView tvProfileName, tvSpecies, tvBreed, tvBirthday, tvDescription;
+    Button buttonAppointments, buttonEdit, buttonDelete;
     Pet pet;
     PetsSQLHelper petsSQLHelper;
     PetsAdapter petsAdapter;
@@ -28,9 +28,13 @@ public class PetProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pet_profile);
 
         tvProfileName = (TextView) findViewById(R.id.tv_profile_name);
-        buttonViewDetails = (Button) findViewById(R.id.button_view_details);
+        tvSpecies = (TextView) findViewById(R.id.tv_species);
+        tvBreed = (TextView) findViewById(R.id.tv_breed);
+        tvBirthday = (TextView) findViewById(R.id.tv_birthday);
+        tvDescription = (TextView) findViewById(R.id.tv_description);
+        buttonEdit = (Button) findViewById(R.id.button_edit);
+        buttonDelete = (Button) findViewById(R.id.button_delete);
         buttonAppointments = (Button) findViewById(R.id.button_appointments);
-
 
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
 
@@ -40,14 +44,30 @@ public class PetProfileActivity extends AppCompatActivity {
         pet = petsSQLHelper.retrievePet(id);
 
         tvProfileName.setText(pet.getName());
+        tvSpecies.setText("Species: "+ pet.getSpecies());
+        tvBreed.setText("Breed: " + pet.getBreed());
+        tvBirthday.setText("Birthday: "+ pet.getBirthday());
+        tvDescription.setText("Description: "+ pet.getDescription());
 
-        buttonViewDetails.setOnClickListener(new View.OnClickListener() {
+
+        buttonEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), ViewPetDetailsActivity.class);
+                Intent intent = new Intent(getBaseContext(), EditPetActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
                 intent.putExtra("id", pet.getId());
+
+                getBaseContext().startActivity(intent);
+            }
+        });
+
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                petsSQLHelper.deletePet(id);
+
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 startActivity(intent);
             }
@@ -76,6 +96,10 @@ public class PetProfileActivity extends AppCompatActivity {
             petsAdapter.changeCursor(petsSQLHelper.retrieveAllPetsCursor());
             pet = petsSQLHelper.retrievePet(id);
             tvProfileName.setText(pet.getName());
+            tvSpecies.setText("Species: "+ pet.getSpecies());
+            tvBreed.setText("Breed: " + pet.getBreed());
+            tvBirthday.setText("Birthday: "+ pet.getBirthday());
+            tvDescription.setText("Description: "+ pet.getDescription());
         }
     }
 

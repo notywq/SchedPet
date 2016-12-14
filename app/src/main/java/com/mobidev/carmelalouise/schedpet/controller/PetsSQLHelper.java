@@ -31,7 +31,9 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
                        + Pet.SPECIES + " TEXT, "
                        + Pet.BREED + " TEXT, "
                        + Pet.BIRTHDAY + " DATE, "
-                       + Pet.DESCRIPTION + " TEXT);";
+                       + Pet.DESCRIPTION + " TEXT, "
+                       + Pet.CALENDAR_ID + " TEXT, "
+                       + Pet.BIRTHDAY_EVENT_ID + " TEXT);";
 
         db.execSQL(sql);
     }
@@ -53,6 +55,8 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
         cv.put(Pet.BREED, pet.getBreed());
         cv.put(Pet.BIRTHDAY, pet.getBirthday());
         cv.put(Pet.DESCRIPTION, pet.getDescription());
+        cv.put(Pet.CALENDAR_ID, pet.getCalendarId());
+        cv.put(Pet.BIRTHDAY_EVENT_ID, pet.getBirthdayEventId());
 
         db.insert(Pet.TABLE, null, cv);
     }
@@ -66,6 +70,8 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
         cv.put(Pet.BREED, pet.getBreed());
         cv.put(Pet.BIRTHDAY, pet.getBirthday());
         cv.put(Pet.DESCRIPTION, pet.getDescription());
+        cv.put(Pet.CALENDAR_ID, pet.getCalendarId());
+        cv.put(Pet.BIRTHDAY_EVENT_ID, pet.getBirthdayEventId());
 
         db.update(Pet.TABLE, cv, Pet.ID + " = ? ",
                 new String[]{pet.getId() + ""});
@@ -96,7 +102,9 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
             // this means that there is an item with that id
             // read the row/item
             pet = new Pet();
-            pet.setId(c.getInt(c.getColumnIndex(Pet.ID)));
+            pet.setId(
+                    c.getInt(c.getColumnIndex(Pet.ID))
+            );
             pet.setName(
                     c.getString(c.getColumnIndex(Pet.NAME))
             );
@@ -111,6 +119,12 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
             );
             pet.setDescription(
                     c.getString(c.getColumnIndex(Pet.DESCRIPTION))
+            );
+            pet.setCalendarId(
+                    c.getString(c.getColumnIndex(Pet.CALENDAR_ID))
+            );
+            pet.setBirthdayEventId(
+                    c.getString(c.getColumnIndex(Pet.BIRTHDAY_EVENT_ID))
             );
         }
 
@@ -147,7 +161,9 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
         if(c.moveToFirst()){
             do {
                 Pet pet = new Pet();
-                pet.setId(c.getInt(c.getColumnIndex(Pet.ID)));
+                pet.setId(
+                        c.getInt(c.getColumnIndex(Pet.ID))
+                );
                 pet.setName(
                         c.getString(c.getColumnIndex(Pet.NAME))
                 );
@@ -162,6 +178,12 @@ public class PetsSQLHelper extends SQLiteOpenHelper {
                 );
                 pet.setDescription(
                         c.getString(c.getColumnIndex(Pet.DESCRIPTION))
+                );
+                pet.setCalendarId(
+                        c.getString(c.getColumnIndex(Pet.CALENDAR_ID))
+                );
+                pet.setBirthdayEventId(
+                        c.getString(c.getColumnIndex(Pet.BIRTHDAY_EVENT_ID))
                 );
                 pets.add(pet);
             }while(c.moveToNext());

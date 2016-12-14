@@ -14,6 +14,9 @@ public class Pet {
     public static final String BREED = "breed";
     public static final String BIRTHDAY = "birthday";
     public static final String DESCRIPTION = "description";
+    public static final String CALENDAR_ID = "calendarId";
+    public static final String BIRTHDAY_EVENT_ID = "birthdayEventId";
+
 
     private int id;
     private String name;
@@ -21,17 +24,21 @@ public class Pet {
     private String breed;
     private String birthday;
     private String description;
+    private String calendarId;
+    private String birthdayEventId;
 
     public Pet() {
     }
 
-    public Pet(int id, String name, String species, String breed, String birthday, String description) {
+    public Pet(int id, String name, String species, String breed, String birthday, String description, String calendarId, String birthdayEventId) {
         this.id = id;
         this.name = name;
         this.species = species;
         this.breed = breed;
         this.birthday = birthday;
         this.description = description;
+        this.calendarId = calendarId;
+        this.birthdayEventId = birthdayEventId;
     }
 
     public int getId() {
@@ -82,6 +89,22 @@ public class Pet {
         this.description = description;
     }
 
+    public String getCalendarId() {
+        return calendarId;
+    }
+
+    public void setCalendarId(String calendarId) {
+        this.calendarId = calendarId;
+    }
+
+    public String getBirthdayEventId() {
+        return birthdayEventId;
+    }
+
+    public void setBirthdayEventId(String birthdayEventId) {
+        this.birthdayEventId = birthdayEventId;
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
@@ -91,6 +114,8 @@ public class Pet {
                 ", breed='" + breed + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", description='" + description + '\'' +
+                ", calendarId='" + calendarId + '\'' +
+                ", birthdayEventId='" + birthdayEventId + '\'' +
                 '}';
     }
 }

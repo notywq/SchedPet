@@ -18,7 +18,6 @@
         <activity android:name=".page.RegisterPetActivity" />
         <activity android:name=".page.PetProfileActivity" />
         <activity android:name=".page.EditPetActivity" />
-        <activity android:name=".page.ViewPetDetailsActivity" />
         <activity android:name=".page.AppointmentsActivity" />
         <activity android:name=".page.VaccinesActivity" />
         <activity android:name=".page.AddVaccineActivity" />
