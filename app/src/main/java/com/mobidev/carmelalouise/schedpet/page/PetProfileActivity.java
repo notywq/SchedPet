@@ -1,12 +1,11 @@
 package com.mobidev.carmelalouise.schedpet.page;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mobidev.carmelalouise.schedpet.R;
 import com.mobidev.carmelalouise.schedpet.controller.PetsAdapter;
@@ -16,7 +15,7 @@ import com.mobidev.carmelalouise.schedpet.model.Pet;
 public class PetProfileActivity extends AppCompatActivity {
 
     TextView tvProfileName, tvSpecies, tvBreed, tvBirthday, tvDescription;
-    Button buttonAppointments, buttonEdit, buttonDelete;
+    Button buttonAppointments, buttonEdit, buttonDelete, buttonVaccines;
     Pet pet;
     PetsSQLHelper petsSQLHelper;
     PetsAdapter petsAdapter;
@@ -35,6 +34,7 @@ public class PetProfileActivity extends AppCompatActivity {
         buttonEdit = (Button) findViewById(R.id.button_edit);
         buttonDelete = (Button) findViewById(R.id.button_delete);
         buttonAppointments = (Button) findViewById(R.id.button_appointments);
+        buttonVaccines = (Button) findViewById(R.id.button_vaccines);
 
         petsSQLHelper = new PetsSQLHelper(getBaseContext());
 
@@ -82,6 +82,17 @@ public class PetProfileActivity extends AppCompatActivity {
                 intent.putExtra("id", pet.getId());
 
                 startActivity(intent);
+            }
+        });
+
+        buttonVaccines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), VaccinesActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("id", pet.getId());
+
+                getBaseContext().startActivity(intent);
             }
         });
     }

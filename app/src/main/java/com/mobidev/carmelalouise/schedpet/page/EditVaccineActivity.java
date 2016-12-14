@@ -10,41 +10,37 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mobidev.carmelalouise.schedpet.R;
-import com.mobidev.carmelalouise.schedpet.controller.PetsSQLHelper;
 import com.mobidev.carmelalouise.schedpet.controller.VaccinesSQLHelper;
-import com.mobidev.carmelalouise.schedpet.model.Pet;
 import com.mobidev.carmelalouise.schedpet.model.Vaccine;
 
 import java.util.Calendar;
 
-public class AddVaccineActivity extends AppCompatActivity {
+public class EditVaccineActivity extends AppCompatActivity {
 
-    EditText etVaccineName, etVaccineDescription, etDateVaccinated;
-    TextInputLayout wrapperVaccineName, wrapperVaccineDescription, wrapperVaccineDateVaccinated;
-    Button buttonVaccineDone;
-    DatePicker datePicker;
-    Calendar calendar;
-    Pet pet;
-    PetsSQLHelper petsSQLHelper;
+    EditText etName, etDescription, etDateVaccinated;
+    Button buttonEditDone;
     Vaccine vaccine;
     VaccinesSQLHelper vaccinesSQLHelper;
+    TextInputLayout nameWrapper, descriptionWrapper, dateVaccinatedWrapper;
+    DatePicker datePicker;
+    Calendar calendar;
     private int year, month, day;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_vaccine);
+        setContentView(R.layout.activity_edit_vaccine);
 
-        etVaccineName = (EditText) findViewById(R.id.et_vaccineName);
-        etVaccineDescription = (EditText) findViewById(R.id.et_vaccineDescription);
-        etDateVaccinated = (EditText) findViewById(R.id.et_dateVaccinated);
-        buttonVaccineDone = (Button) findViewById(R.id.button_vaccineDone);
-        wrapperVaccineName = (TextInputLayout) findViewById(R.id.vaccine_name_wrapper);
-        wrapperVaccineDescription = (TextInputLayout) findViewById(R.id.vaccine_description_wrapper);
-        wrapperVaccineDateVaccinated = (TextInputLayout) findViewById(R.id.vaccine_date_vaccinated_wrapper);
+        etName = (EditText) findViewById(R.id.et_edit_vaccine_name);
+        etDescription = (EditText) findViewById(R.id.et_edit_vaccine_description);
+        etDateVaccinated = (EditText) findViewById(R.id.et_edit_date_vaccinated);
+        buttonEditDone = (Button) findViewById(R.id.button_edit_vaccine_done);
+        nameWrapper = (TextInputLayout) findViewById(R.id.edit_vaccine_name_wrapper);
+        descriptionWrapper = (TextInputLayout) findViewById(R.id.edit_vaccine_description_wrapper);
+        dateVaccinatedWrapper = (TextInputLayout) findViewById(R.id.edit_date_vaccinated_wrapper);
 
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
@@ -52,44 +48,42 @@ public class AddVaccineActivity extends AppCompatActivity {
         day = calendar.get(Calendar.DAY_OF_MONTH);
         showDate(year, month+1, day);
 
-        pet = new Pet();
-        petsSQLHelper = new PetsSQLHelper(getBaseContext());
-        final int id = getIntent().getExtras().getInt("id");
-        pet = petsSQLHelper.retrievePet(id);
-        vaccine = new Vaccine();
         vaccinesSQLHelper = new VaccinesSQLHelper(getBaseContext());
+        final int id = getIntent().getExtras().getInt("id");
+        vaccine = vaccinesSQLHelper.retrieveVaccine(id);
 
-        buttonVaccineDone.setOnClickListener(new View.OnClickListener() {
+        etName.setText(vaccine.getName());
+        etDescription.setText(vaccine.getDescription());
+        etDateVaccinated.setText(vaccine.getDateVaccinated());
+
+        buttonEditDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = etVaccineName.getText().toString();
-                String description = etVaccineDescription.getText().toString();
+                String name = etName.getText().toString();
+                String description = etDescription.getText().toString();
                 String dateVaccinated = etDateVaccinated.getText().toString();
-                final int id = getIntent().getExtras().getInt("id");
 
-                if(!name.trim().isEmpty() &&!description.trim().isEmpty()
-                        && !dateVaccinated.trim().isEmpty()){
+                if(!name.trim().isEmpty() && !description.trim().isEmpty() && !dateVaccinated.trim().isEmpty()){
                     vaccine.setName(name);
                     vaccine.setDescription(description);
                     vaccine.setDateVaccinated(dateVaccinated);
-                    vaccine.setPetId(id);
-                    vaccinesSQLHelper.insertVaccine(vaccine);
+                    vaccinesSQLHelper.updateVaccine(vaccine);
                     finish();
                 }
 
                 else{
-                    Snackbar.make(buttonVaccineDone, "Please enter values into the missing fields.", Snackbar.LENGTH_SHORT).show();
+                    Snackbar.make(buttonEditDone, "Please enter values into the missing fields.", Snackbar.LENGTH_SHORT).show();
                 }
             }
         });
-
     }
-
-
 
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
         showDialog(999);
+        Toast.makeText(getApplicationContext(), "ca",
+                Toast.LENGTH_SHORT)
+                .show();
     }
 
     @Override

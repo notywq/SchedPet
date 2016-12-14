@@ -30,8 +30,6 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
                        + Vaccine.NAME + " TEXT, "
                        + Vaccine.DESCRIPTION + " TEXT, "
                        + Vaccine.DATE_VACCINATED + " DATE, "
-                       + Vaccine.DATE_NEXT_DUE + " DATE, "
-                       + Vaccine.ACCOMPLISHED + " BOOLEAN, "
                        + Vaccine.PET_ID + " INTEGER);";
 
         db.execSQL(sql);
@@ -52,8 +50,6 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
         cv.put(Vaccine.NAME, vaccine.getName());
         cv.put(Vaccine.DESCRIPTION, vaccine.getDescription());
         cv.put(Vaccine.DATE_VACCINATED, vaccine.getDateVaccinated());
-        cv.put(Vaccine.DATE_NEXT_DUE , vaccine.getDateNextDue());
-        cv.put(Vaccine.ACCOMPLISHED, vaccine.getAccomplished());
         cv.put(Vaccine.PET_ID, vaccine.getPetId());
 
         db.insert(Vaccine.TABLE, null, cv);
@@ -66,8 +62,6 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
         cv.put(Vaccine.NAME, vaccine.getName());
         cv.put(Vaccine.DESCRIPTION, vaccine.getDescription());
         cv.put(Vaccine.DATE_VACCINATED, vaccine.getDateVaccinated());
-        cv.put(Vaccine.DATE_NEXT_DUE , vaccine.getDateNextDue());
-        cv.put(Vaccine.ACCOMPLISHED, vaccine.getAccomplished());
         cv.put(Vaccine.PET_ID, vaccine.getPetId());
 
         db.update(Vaccine.TABLE, cv, Vaccine.ID + " = ? ",
@@ -110,12 +104,6 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
             );
             vaccine.setDateVaccinated(
                     c.getString(c.getColumnIndex(Vaccine.DATE_VACCINATED))
-            );
-            vaccine.setDateNextDue(
-                    c.getString(c.getColumnIndex(Vaccine.DATE_NEXT_DUE))
-            );
-            vaccine.setAccomplished(
-                    c.getString(c.getColumnIndex(Vaccine.ACCOMPLISHED))
             );
         }
 
@@ -163,12 +151,6 @@ public class VaccinesSQLHelper extends SQLiteOpenHelper {
                 );
                 vaccine.setDateVaccinated(
                         c.getString(c.getColumnIndex(Vaccine.DATE_VACCINATED))
-                );
-                vaccine.setDateNextDue(
-                        c.getString(c.getColumnIndex(Vaccine.DATE_NEXT_DUE))
-                );
-                vaccine.setAccomplished(
-                        c.getString(c.getColumnIndex(Vaccine.ACCOMPLISHED))
                 );
                 vaccine.setPetId(
                         c.getInt(c.getColumnIndex(Vaccine.PET_ID))

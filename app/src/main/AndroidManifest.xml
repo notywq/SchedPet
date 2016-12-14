@@ -4,7 +4,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/schedpet"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -21,6 +21,8 @@
         <activity android:name=".page.AppointmentsActivity" />
         <activity android:name=".page.VaccinesActivity" />
         <activity android:name=".page.AddVaccineActivity" />
+        <activity android:name=".page.VaccineDetailsActivity" />
+        <activity android:name=".page.EditVaccineActivity"></activity>
     </application>
 
 </manifest>

@@ -20,23 +20,15 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View Appointments"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/tv_appointments_title"
-        android:id="@+id/button_view_appointments"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Add an Appointment"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/button_view_appointments"
+        android:layout_below="@id/tv_appointments_title"
         android:id="@+id/button_add_appointment"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Edit/Delete an Appointment"
+        android:text="View/Edit/Delete an Appointment"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/button_add_appointment"
         android:id="@+id/button_edit_delete_appointment"/>

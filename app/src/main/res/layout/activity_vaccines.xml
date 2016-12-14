@@ -10,17 +10,9 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mobidev.carmelalouise.schedpet.page.VaccinesActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="+"
-        android:layout_alignParentRight="true"
-        android:id="@+id/button_add_vaccine"/>
-
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_add_vaccine"
         android:id="@+id/rv_vaccines">
     </android.support.v7.widget.RecyclerView>
 

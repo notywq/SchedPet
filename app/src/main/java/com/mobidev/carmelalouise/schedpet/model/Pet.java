@@ -12,7 +12,6 @@ public class Pet {
     public static final String BREED = "breed";
     public static final String BIRTHDAY = "birthday";
     public static final String DESCRIPTION = "description";
-    public static final String BIRTHDAY_EVENT_ID = "birthdayEventId";
 
 
     private int id;
@@ -21,19 +20,17 @@ public class Pet {
     private String breed;
     private String birthday;
     private String description;
-    private String birthdayEventId;
 
     public Pet() {
     }
 
-    public Pet(int id, String name, String species, String breed, String birthday, String description, String birthdayEventId) {
+    public Pet(int id, String name, String species, String breed, String birthday, String description) {
         this.id = id;
         this.name = name;
         this.species = species;
         this.breed = breed;
         this.birthday = birthday;
         this.description = description;
-        this.birthdayEventId = birthdayEventId;
     }
 
     public int getId() {
@@ -84,14 +81,6 @@ public class Pet {
         this.description = description;
     }
 
-    public String getBirthdayEventId() {
-        return birthdayEventId;
-    }
-
-    public void setBirthdayEventId(String birthdayEventId) {
-        this.birthdayEventId = birthdayEventId;
-    }
-
     @Override
     public String toString() {
         return "Pet{" +
@@ -101,7 +90,6 @@ public class Pet {
                 ", breed='" + breed + '\'' +
                 ", birthday='" + birthday + '\'' +
                 ", description='" + description + '\'' +
-                ", birthdayEventId='" + birthdayEventId + '\'' +
                 '}';
     }
 }

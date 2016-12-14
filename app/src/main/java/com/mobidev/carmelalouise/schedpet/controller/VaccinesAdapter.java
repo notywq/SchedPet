@@ -1,9 +1,8 @@
 package com.mobidev.carmelalouise.schedpet.controller;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mobidev.carmelalouise.schedpet.R;
+import com.mobidev.carmelalouise.schedpet.model.Pet;
 import com.mobidev.carmelalouise.schedpet.model.Vaccine;
+import com.mobidev.carmelalouise.schedpet.page.VaccineDetailsActivity;
+
+import java.util.ArrayList;
 
 /**
  * Created by Carmela Louise on 11/28/2016.
@@ -54,6 +57,23 @@ public class VaccinesAdapter extends CursorRecyclerViewAdapter<VaccinesAdapter.V
         @Override
         public void onClick(View v) {
 
+            Intent intent = new Intent(context, VaccineDetailsActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            PetsSQLHelper petsql = new PetsSQLHelper(context);
+            ArrayList<Pet> pet = petsql.retrieveAllPets();
+            Pet currPet = pet.get(getAdapterPosition());
+
+            intent.putExtra("id",currPet.getId());
+
+            VaccinesSQLHelper sql = new VaccinesSQLHelper(context);
+            ArrayList<Vaccine> vaccine = sql.retrieveAllVaccinesPerPet(currPet.getId());
+            Vaccine currVaccine = vaccine.get(getAdapterPosition());
+
+            intent.putExtra("id",currVaccine.getId());
+            intent.putExtra("pet_id", currPet.getId());
+
+            context.startActivity(intent);
         }
     }
 }
