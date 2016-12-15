@@ -8,13 +8,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".page.MainActivity">
+        <activity android:name=".page.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".page.MainActivity"/>
         <activity android:name=".page.RegisterPetActivity" />
         <activity android:name=".page.PetProfileActivity" />
         <activity android:name=".page.EditPetActivity" />
@@ -22,7 +23,8 @@
         <activity android:name=".page.VaccinesActivity" />
         <activity android:name=".page.AddVaccineActivity" />
         <activity android:name=".page.VaccineDetailsActivity" />
-        <activity android:name=".page.EditVaccineActivity"></activity>
+        <activity android:name=".page.EditVaccineActivity" />
+
     </application>
 
 </manifest>
