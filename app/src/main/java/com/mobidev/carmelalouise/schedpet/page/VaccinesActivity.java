@@ -74,6 +74,8 @@ public class VaccinesActivity extends AppCompatActivity {
         {
             final int pet_id = getIntent().getExtras().getInt("id");
             vaccinesAdapter.changeCursor(vaccinesSQLHelper.retrieveAllVaccinesPerPetCursor(pet_id));
+            if(!(vaccinesSQLHelper.retrieveAllVaccinesPerPet(pet_id).isEmpty()))
+                tvVaccineMessage.setText("");
         }
     }
 

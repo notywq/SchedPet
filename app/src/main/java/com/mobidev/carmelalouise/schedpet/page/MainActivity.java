@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
         if(petsAdapter!=null)
         {
             petsAdapter.changeCursor(petsSQLHelper.retrieveAllPetsCursor());
+            if(!(petsSQLHelper.retrieveAllPets().isEmpty()))
+                tvMessage.setText("");
         }
     }
 

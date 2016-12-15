@@ -14,7 +14,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vaccines"
-        android:textSize="30dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="40dp"
         android:id="@+id/tv_vaccine_title" />
 
     <TextView
@@ -29,7 +30,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tv_vaccine_message"
+        android:layout_below="@id/tv_vaccine_title"
         android:id="@+id/rv_vaccines">
     </android.support.v7.widget.RecyclerView>
 

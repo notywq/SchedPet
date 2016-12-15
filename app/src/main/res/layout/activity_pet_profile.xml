@@ -20,14 +20,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
+        android:textSize="40dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:layout_below="@id/iv_icon"
         android:id="@+id/tv_profile_name"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Species: "
         android:layout_below="@id/tv_profile_name"
         android:id="@+id/tv_species"/>
@@ -35,6 +38,8 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Breed: "
         android:layout_below="@id/tv_species"
         android:id="@+id/tv_breed"/>
@@ -42,7 +47,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:text="Birthday: "
+        android:textSize="20dp"
         android:layout_below="@id/tv_breed"
         android:id="@+id/tv_birthday"/>
 
@@ -50,6 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Description: "
+        android:textSize="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_below="@id/tv_birthday"
         android:id="@+id/tv_description"/>
 
@@ -57,6 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit"
+        android:layout_marginBottom="5dp"
         android:layout_below="@id/tv_description"
         android:layout_centerHorizontal="true"
         android:id="@+id/button_edit"/>
@@ -65,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
+        android:layout_marginBottom="5dp"
         android:layout_below="@id/button_edit"
         android:layout_centerHorizontal="true"
         android:id="@+id/button_delete"/>
@@ -73,6 +84,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Appointments"
+        android:layout_marginBottom="5dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/button_delete"
         android:id="@+id/button_appointments"/>

@@ -51,10 +51,7 @@ public class VaccineDetailsActivity extends AppCompatActivity {
             public void onClick(View v) {
                 vaccinesSQLHelper.deleteVaccine(id);
 
-                Intent intent = new Intent(getBaseContext(), VaccinesActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -64,6 +61,7 @@ public class VaccineDetailsActivity extends AppCompatActivity {
                 Intent intent = new Intent(getBaseContext(), EditVaccineActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("id", vaccine.getId());
+                intent.putExtra("pet_id", vaccine.getPetId());
 
                 getBaseContext().startActivity(intent);
             }
@@ -77,8 +75,11 @@ public class VaccineDetailsActivity extends AppCompatActivity {
         super.onResume();
         if(vaccinesAdapter!=null)
         {
-            final int id = getIntent().getExtras().getInt("id");
-            //vaccinesAdapter.changeCursor(vaccinesSQLHelper.retrieveVaccine(id));
+            vaccine = vaccinesSQLHelper.retrieveVaccine(id);
+            tvVaccineName.setText("Vaccine: " + vaccine.getName());
+            tvVaccineDescription.setText("Description: "+ vaccine.getDescription());
+            tvVaccineDateVaccinated.setText("Date Vaccinated (YYYY-MM-DD): "+ vaccine.getDateVaccinated());
+
         }
     }
 

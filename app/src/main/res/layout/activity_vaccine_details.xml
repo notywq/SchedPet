@@ -14,6 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:layout_marginBottom="20dp"
         android:text="Vaccine Details"
         android:id="@+id/tv_vaccine_details_title"/>
 
@@ -21,6 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_below="@id/tv_vaccine_details_title"
         android:id="@+id/tv_vaccine_name"/>
 
@@ -28,6 +31,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_below="@id/tv_vaccine_name"
         android:id="@+id/tv_vaccine_description"/>
 
@@ -35,12 +40,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_below="@id/tv_vaccine_description"
         android:id="@+id/tv_vaccine_date_vaccinated"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/tv_vaccine_date_vaccinated"
         android:text="Edit"
@@ -49,6 +57,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minWidth="100dp"
         android:layout_alignParentRight="true"
         android:layout_below="@id/tv_vaccine_date_vaccinated"
         android:text="Delete"

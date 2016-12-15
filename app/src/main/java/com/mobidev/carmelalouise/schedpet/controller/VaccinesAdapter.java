@@ -32,9 +32,8 @@ public class VaccinesAdapter extends CursorRecyclerViewAdapter<VaccinesAdapter.V
 
     @Override
     public void onBindViewHolder(VaccineViewHolder viewHolder, Cursor cursor) {
-        viewHolder.tvDisplayVaccineName.setText(
-                cursor.getString(cursor.getColumnIndex(Vaccine.NAME))
-        );
+        viewHolder.tvDisplayVaccineName.setText(cursor.getString(cursor.getColumnIndex(Vaccine.NAME)));
+        viewHolder.tvDisplayVaccineDate.setText(cursor.getString((cursor.getColumnIndex(Vaccine.DATE_VACCINATED))));
     }
 
     @Override
@@ -45,12 +44,13 @@ public class VaccinesAdapter extends CursorRecyclerViewAdapter<VaccinesAdapter.V
     }
 
     public class VaccineViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        TextView tvDisplayVaccineName;
+        TextView tvDisplayVaccineName, tvDisplayVaccineDate;
         View containerVaccine;
 
         public VaccineViewHolder(View itemView) {
             super(itemView);
             tvDisplayVaccineName = (TextView) itemView.findViewById(R.id.tv_display_vaccine_name);
+            tvDisplayVaccineDate = (TextView) itemView.findViewById(R.id.tv_display_vaccine_date);
             containerVaccine = itemView.findViewById(R.id.container_vaccine);
             itemView.setOnClickListener(this);
         }
@@ -67,6 +67,7 @@ public class VaccinesAdapter extends CursorRecyclerViewAdapter<VaccinesAdapter.V
 
             Log.i("adapter position", vaccine.get(getAdapterPosition())+"");
             intent.putExtra("id",currVaccine.getId());
+            intent.putExtra("pet_id", currVaccine.getPetId());
 
             context.startActivity(intent);
         }

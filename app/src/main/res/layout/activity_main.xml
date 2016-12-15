@@ -17,12 +17,14 @@
         android:layout_height="wrap_content"
         android:text="My Pets"
         android:textSize="30dp"
+        android:layout_marginBottom="20dp"
         android:id="@+id/tv_title"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="View All Appointments"
+        android:layout_marginBottom="20dp"
         android:layout_below="@id/tv_title"
         android:layout_centerHorizontal="true"
         android:id="@+id/button_view_all_appointments"/>
